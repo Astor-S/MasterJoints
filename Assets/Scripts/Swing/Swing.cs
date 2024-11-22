@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class Swing : MonoBehaviour
 {
+    [SerializeField] private KeyCode _swayKey = KeyCode.Space;
+    
     [SerializeField] private float _swingSpeed = 20f;
     [SerializeField] private float _swingForce = 200f;
     [SerializeField] private float _targetAngle = 45f;
 
     private HingeJoint _hingeJoint;
+    
     private float _currentAngle = 0f; 
     private bool _isSwinging = false;
 
@@ -17,7 +20,7 @@ public class Swing : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _isSwinging == false)
+        if (Input.GetKeyDown(_swayKey) && _isSwinging == false)
         {
             _isSwinging = true;
             _currentAngle = 0f;
